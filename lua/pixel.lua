@@ -64,7 +64,7 @@ end
 local M = {}
 
 M.art = function(name)
-	art(name)
+	return art(name)
 end
 
 return M
