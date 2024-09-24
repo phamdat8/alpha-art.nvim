@@ -102,6 +102,8 @@ end
 
 local colorized = colorize(header, color_map, colors)
 
+M.art = {}
+
 M.art.header = header
 M.art.colorized = colorized
 
