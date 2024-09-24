@@ -57,8 +57,9 @@ local function art(name)
 	end
 
 	local colorized = colorize(header, color_map, colors)
-	M.art.header = header
-	M.art.colorized = colorized
+	M.header = header
+	M.colorized = colorized
+	return M
 end
 local M = {}
 
