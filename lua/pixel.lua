@@ -38,28 +38,32 @@ local function getArtData(name)
 	return require("pixels." .. name)
 end
 
-local M = {}
-local color_map = getArtData("bee").map
-local colors = getArtData("bee").colors
+local function art(name)
+	local M = {}
+	local color_map = getArtData(name).map
+	local colors = getArtData(name).colors
 
-local header = {}
-for _, line in ipairs(color_map) do
-	local header_line = [[]]
-	for i = 1, #line do
-		if line:sub(i, i) ~= " " then
-			header_line = header_line .. "█"
-		else
-			header_line = header_line .. " "
+	local header = {}
+	for _, line in ipairs(color_map) do
+		local header_line = [[]]
+		for i = 1, #line do
+			if line:sub(i, i) ~= " " then
+				header_line = header_line .. "█"
+			else
+				header_line = header_line .. " "
+			end
 		end
+		table.insert(header, header_line)
 	end
-	table.insert(header, header_line)
+
+	local colorized = colorize(header, color_map, colors)
+	M.art.header = header
+	M.art.colorized = colorized
 end
+local M = {}
 
-local colorized = colorize(header, color_map, colors)
-
-M.art = {}
-
-M.art.header = header
-M.art.colorized = colorized
+M.art = function(name)
+	art(name)
+end
 
 return M
