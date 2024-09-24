@@ -102,7 +102,7 @@ end
 
 local colorized = colorize(header, color_map, colors)
 
-M.getArt.header = header
-M.getArt.colorized = colorized
+M.art.header = header
+M.art.colorized = colorized
 
 return M
