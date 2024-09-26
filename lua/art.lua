@@ -39,7 +39,6 @@ local function getArtData(name)
 end
 
 local function pixels(name)
-	local M = {}
 	local color_map = getArtData(name).map
 	local colors = getArtData(name).colors
 
@@ -57,9 +56,12 @@ local function pixels(name)
 	end
 
 	local colorized = colorize(header, color_map, colors)
-	M.val = header
-	M.opts = { hl = colorized, position = "center" }
-	M.type = "text"
+
+	local M = {
+		val = header,
+		opts = { hl = colorized, position = "center" },
+		type = "text",
+	}
 	return M
 end
 local M = {}
