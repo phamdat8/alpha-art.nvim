@@ -63,7 +63,7 @@ local function pixels(name)
 end
 local M = {}
 
-M.art = function(name)
+M.pixels = function(name)
 	return pixels(name)
 end
 
