@@ -57,12 +57,11 @@ local function pixels(name)
 
 	local colorized = colorize(header, color_map, colors)
 
-	local M = {
+	return {
 		val = header,
 		opts = { hl = colorized, position = "center" },
 		type = "text",
 	}
-	return M
 end
 local M = {}
 
