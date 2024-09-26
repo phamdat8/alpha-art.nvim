@@ -8,9 +8,7 @@ With [lazy.nvim](https://github.com/folke/lazy.nvim):
     dependencies = { "phamdat8/alpha-art.nvim" },
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
-
-      local art = require("art").pixels("bee")
-      dashboard.section.header = art
+      dashboard.section.header = require("art").pixels("bee")
     end,
     config = function()
       require("alpha").setup(require("alpha.themes.dashboard").opts)
