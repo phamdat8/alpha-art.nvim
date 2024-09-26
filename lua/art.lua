@@ -38,7 +38,7 @@ local function getArtData(name)
 	return require("pixels." .. name)
 end
 
-local function art(name)
+local function pixels(name)
 	local M = {}
 	local color_map = getArtData(name).map
 	local colors = getArtData(name).colors
@@ -58,13 +58,13 @@ local function art(name)
 
 	local colorized = colorize(header, color_map, colors)
 	M.val = header
-	M.colorized = colorized
+	M.otps = { hl = colorized, position = "center" }
 	return M
 end
 local M = {}
 
 M.art = function(name)
-	return art(name)
+	return pixels(name)
 end
 
 return M
