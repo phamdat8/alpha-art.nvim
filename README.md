@@ -7,11 +7,12 @@ With [lazy.nvim](https://github.com/folke/lazy.nvim):
     'goolord/alpha-nvim',
     dependencies = { "phamdat8/alpha-art.nvim" },
     opts = function()
-      local dashboard = require("alpha.themes.dashboard")
-      dashboard.section.header = require("art").pixels("bee")
+      dashboard.config.layout[2] = require("art").pixels("bee")
+
+      return dashboard
     end,
-    config = function()
-      require("alpha").setup(require("alpha.themes.dashboard").opts)
+    config = function(_, dashboard)
+      require("alpha").setup(dashboard.config)
     end,
 };
 ```
