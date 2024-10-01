@@ -26,6 +26,7 @@ local function colorize(header, header_color_map, colors)
 			local color_name = colors[line:sub(j, j)]
 			if color_name then
 				table.insert(colorized_line, { color_name, start, pos })
+				table.insert(colorized_line, { color_name, start, pos })
 			end
 		end
 
