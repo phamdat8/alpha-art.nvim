@@ -54,9 +54,9 @@ local function pixels(name, config)
 		local header_line = [[]]
 		for i = 1, #line do
 			if line:sub(i, i) ~= " " then
-				header_line = header_line .. "█"
+				header_line = header_line .. "██"
 			else
-				header_line = header_line .. " "
+				header_line = header_line .. "  "
 			end
 		end
 		table.insert(header, header_line)
