@@ -38,9 +38,16 @@ local function getArtData(name)
 	return require("pixels." .. name)
 end
 
-local function pixels(name)
-	local color_map = getArtData(name).map
-	local colors = getArtData(name).colors
+local function pixels(name, config)
+	local color_map
+	local colors
+	if name == "custom" then
+		color_map = config.map
+		colors = config.colors
+	else
+		color_map = getArtData(name).map
+		colors = getArtData(name).colors
+	end
 
 	local header = {}
 	for _, line in ipairs(color_map) do
@@ -65,8 +72,8 @@ local function pixels(name)
 end
 local M = {}
 
-M.pixels = function(name)
-	return pixels(name)
+M.pixels = function(name, config)
+	return pixels(name, config)
 end
 
 return M
