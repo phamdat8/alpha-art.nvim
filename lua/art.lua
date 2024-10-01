@@ -26,7 +26,6 @@ local function colorize(header, header_color_map, colors)
 			local color_name = colors[line:sub(j, j)]
 			if color_name then
 				table.insert(colorized_line, { color_name, start, pos })
-				table.insert(colorized_line, { color_name, start, pos })
 			end
 		end
 
@@ -35,8 +34,22 @@ local function colorize(header, header_color_map, colors)
 
 	return colorized
 end
+
 local function getArtData(name)
 	return require("pixels." .. name)
+end
+
+local function duplicate_chars(arr)
+	local result = {}
+	for i = 1, #arr do
+		local new_str = ""
+		for j = 1, #arr[i] do
+			local char = arr[i]:sub(j, j)
+			new_str = new_str .. char .. char
+		end
+		table.insert(result, new_str)
+	end
+	return result
 end
 
 local function pixels(name, config)
@@ -49,15 +62,16 @@ local function pixels(name, config)
 		color_map = getArtData(name).map
 		colors = getArtData(name).colors
 	end
+	color_map = duplicate_chars(color_map)
 
 	local header = {}
 	for _, line in ipairs(color_map) do
 		local header_line = [[]]
 		for i = 1, #line do
 			if line:sub(i, i) ~= " " then
-				header_line = header_line .. "██"
+				header_line = header_line .. "█"
 			else
-				header_line = header_line .. "  "
+				header_line = header_line .. " "
 			end
 		end
 		table.insert(header, header_line)
