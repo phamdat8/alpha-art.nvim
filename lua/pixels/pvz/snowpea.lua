@@ -1,0 +1,41 @@
+local M = {}
+M.map = {
+	[[      BBB              ]],
+	[[   BBBCDABBBBB         ]],
+	[[  BCAABEBFGCCCB   BB   ]],
+	[[  BCBBBBFAAFFFFB BAAB  ]],
+	[[   BAABCAAFFGFBBBAFBCB ]],
+	[[  BCGBBCFFFFBBABCFBBCB ]],
+	[[  BCBCBCFFFFABCFFFBBCB ]],
+	[[   BCFBEFFFFFFFFEGCBFB ]],
+	[[  BABEBEEFFFFFFEBBFCB  ]],
+	[[  BBABBBEEFFFFEB  BB   ]],
+	[[        BHEEEEB        ]],
+	[[         BBBBB         ]],
+	[[         BIIIJ         ]],
+	[[      BBBBIKB          ]],
+	[[     BIIIJKKBBBB       ]],
+	[[     BBBBBKKBIIIJ      ]],
+	[[    BKKKIJLIIKKKKB     ]],
+	[[   BKKKKIIJIKKKKKKB    ]],
+	[[   BKBKKKIIKKKKBBKB    ]],
+	[[    B BKKKBLKKB  B     ]],
+	[[       BBLKKKB         ]],
+	[[         BBBB          ]],
+}
+
+M.colors = {
+	["A"] = { fg = "#ffffff" },
+	["B"] = { fg = "#000000" },
+	["C"] = { fg = "#009fff" },
+	["D"] = { fg = "#ffffdf" },
+	["E"] = { fg = "#5f3fbf" },
+	["F"] = { fg = "#00bfff" },
+	["G"] = { fg = "#00bfdf" },
+	["H"] = { fg = "#5f3fdf" },
+	["I"] = { fg = "#5f9f00" },
+	["J"] = { fg = "#00001f" },
+	["K"] = { fg = "#9fff00" },
+	["L"] = { fg = "#9fff1f" },
+}
+return M
