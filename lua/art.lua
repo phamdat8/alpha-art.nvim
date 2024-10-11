@@ -9,7 +9,9 @@ end
 local function colorize(header, header_color_map, colors)
 	for letter, color in pairs(colors) do
 		local color_name = "AlphaJemuelKwelKwelWalangTatay" .. letter
-		vim.api.nvim_set_hl(0, color_name, color)
+		if vim then
+			vim.api.nvim_set_hl(0, color_name, color)
+		end
 		colors[letter] = color_name
 	end
 
@@ -52,15 +54,36 @@ local function duplicate_chars(arr)
 	return result
 end
 
-local function pixels(name, config)
+local function get_art_random(name)
+	local handle = io.popen("cd pixels/" .. name:sub(1, -6) .. " && ls")
+	local result = handle:read("*a")
+	handle:close()
+	local files = {}
+	for file in string.gmatch(result, "[%w_]+%.lua") do
+		local module_name = file:gsub("%.lua$", "")
+		table.insert(files, module_name)
+	end
+	local file = files[math.random(#files)]
+
+	local M = require("pixels." .. name:sub(1, -6) .. "/" .. file)
+	return M
+end
+
+function pixels(name, config)
 	local color_map
 	local colors
 	if name == "custom" then
 		color_map = config.map
 		colors = config.colors
 	else
-		color_map = getArtData(name).map
-		colors = getArtData(name).colors
+		if name:match("rand$") ~= nil then
+			local art = get_art_random(name)
+			color_map = art.map
+			colors = art.colors
+		else
+			color_map = getArtData(name).map
+			colors = getArtData(name).colors
+		end
 	end
 	color_map = duplicate_chars(color_map)
 
