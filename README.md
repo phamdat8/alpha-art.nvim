@@ -7,7 +7,7 @@ With [lazy.nvim](https://github.com/folke/lazy.nvim):
     'goolord/alpha-nvim',
     dependencies = { "phamdat8/alpha-art.nvim" },
     opts = function()
-      dashboard.config.layout[2] = require("art").pixels("bee")
+      dashboard.config.layout[2] = require("art").pixels("pvz/peashooter")
 
       return dashboard
     end,
